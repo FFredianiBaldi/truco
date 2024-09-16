@@ -122,24 +122,24 @@ def segunda_mano(quienva):
 	if Carta(carta_2_MIA).jerarquizar() > Carta(carta_2_CPU).jerarquizar():
 		manos[1] = 0
 		if manos[0] == 0 or manos[0] ==  2:
-			print '---> Perdí la mano.'
+			print ('---> Perdí la mano.')
 			pts('pJUG', truco_hecho+1)
 			raise ZeroDivisionError
 		tercera_mano('jugador')
 	elif Carta(carta_2_MIA).jerarquizar() < Carta(carta_2_CPU).jerarquizar():
 		manos[1] = 1
 		if manos[0] == 1 or manos[0] ==  2:
-			print '---> Gané la mano.'
+			print ('---> Gané la mano.')
 			pts('pCPU', truco_hecho+1)
 			raise ZeroDivisionError
 		tercera_mano('cpu')
 	elif Carta(carta_2_MIA).jerarquizar() == Carta(carta_2_CPU).jerarquizar():
 		if manos[0] == 0:
-			print '---> Perdí la mano.'
+			print ('---> Perdí la mano.')
 			pts('pJUG', truco_hecho+1)
 			raise ZeroDivisionError
 		elif manos [0] == 1:
-			print '---> Gané la mano.'
+			print ('---> Gané la mano.')
 			pts('pCPU', truco_hecho+1)
 			raise ZeroDivisionError
 		else:
@@ -171,10 +171,10 @@ def tercera_mano(quienva):
 	carta_3_MIA = cartas_tiradas_MIA[2]
 	
 	if Carta(carta_3_CPU).jerarquizar() > Carta(carta_3_MIA).jerarquizar():
-		print '---> Gané la mano.'
+		print ('---> Gané la mano.')
 		pts('pCPU', truco_hecho+1)
 	else:
-		print '---> Perdí la mano.'
+		print ('---> Perdí la mano.')
 		pts('pJUG', truco_hecho+1)
 	raise ZeroDivisionError
 	
@@ -189,11 +189,11 @@ def truco(quienlocanta, pasar = 0):
 	if quienlocanta == 'el' and tiene_el_quiero is not True:
 		if pasar == 0:
 			if truco_hecho == 0:
-				cantar = raw_input('Querés cantar truco? (S/n) ' )
+				cantar = input('Querés cantar truco? (S/n) ' )
 			elif truco_hecho == 1:
-				cantar = raw_input('Querés cantar retruco? (S/n) ' )
+				cantar = input('Querés cantar retruco? (S/n) ' )
 			elif truco_hecho == 2:
-				cantar = raw_input('Querés cantar vale cuatro? (S/n) ' )
+				cantar = input('Querés cantar vale cuatro? (S/n) ' )
 			else:
 				pass
 		else:
@@ -201,22 +201,22 @@ def truco(quienlocanta, pasar = 0):
 		
 		if cantar in SI:
 			if truco_utilidad() == True:
-				print '---> Quiero'
+				print ('---> Quiero')
 				truco_hecho += 1
 				tiene_el_quiero = True
 			else:
-				print '---> No quiero'
+				print ('---> No quiero')
 				vaqueriendo = False
 		else:
 			pass
 	elif quienlocanta == 'cpu' and tiene_el_quiero is not False:
 		if truco_utilidad()==True:
 			if truco_hecho == 0:
-				cantar = raw_input('---> Truco\n---> Querés? (S/n/R) ')
+				cantar = input('---> Truco\n---> Querés? (S/n/R) ')
 			elif truco_hecho == 1:
-				cantar = raw_input('---> Re truco\n---> Querés? (S/n/R) ')
+				cantar = input('---> Re truco\n---> Querés? (S/n/R) ')
 			elif truco_hecho == 2:
-				cantar = raw_input('---> Vale cuatro\n---> Querés? (S/n/R) ')
+				cantar = input('---> Vale cuatro\n---> Querés? (S/n/R) ')
 			else:
 				pass
 			if cantar in SI:
@@ -254,7 +254,7 @@ def envido(soymano, tanto, mano):
 		
 		if soymano == True:
 			if cantar_envido(tanto, tanto) == True:
-				env = raw_input('---> Real envido\n---> Querés? (S/n) ')
+				env = input('---> Real envido\n---> Querés? (S/n) ')
 				if env in SI:
 					CualEnvido = 'RealEnvido'
 					hablar_envido(mano)
@@ -263,17 +263,17 @@ def envido(soymano, tanto, mano):
 				envido_hecho = 1
 			else:
 				if cantar_envido(tanto, 100) == True:
-					env = raw_input('---> Envido\n---> Querés? (S/n/E) ')
+					env = input('---> Envido\n---> Querés? (S/n/E) ')
 					if env in SI:
 						CualEnvido = 'Envido'
 						hablar_envido(mano)
 					elif env == 'E' or env == 'e':
 						if cantar_envido(tanto, 50) == True:
-							print '---> Quiero'
+							print ('---> Quiero')
 							CualEnvido = 'EnvidoEnvido'
 							hablar_envido(mano)
 						else:
-							print '---> No quiero'
+							print ('---> No quiero')
 							pts('pJUG', 3)
 					else:
 						pts('pCPU', 1)
@@ -281,41 +281,41 @@ def envido(soymano, tanto, mano):
 				#else:
 				#	print 'No cantes nada'
 		else:
-			canto_envido = raw_input('Querés cantar envido? (S/n/R/F) ')
+			canto_envido = input('Querés cantar envido? (S/n/R/F) ')
 			
 			if canto_envido in SI:
 				envido_hecho = 1
 				if cantar_envido(tanto, tanto) == True:
-					env = raw_input('---> Envido\n---> Querés? (S/n) ')
+					env = input('---> Envido\n---> Querés? (S/n) ')
 					if env in SI:
 						CualEnvido = 'EnvidoEnvido'
 						hablar_envido(mano)
 						
 				else:
 					if cantar_envido(tanto, 100) == True:
-						print '---> Quiero'
+						print ('---> Quiero')
 						CualEnvido = 'Envido'
 						hablar_envido(mano)
 					else:
-						print '---> No quiero'
+						print ('---> No quiero')
 						pts('pJUG', 1)
 			elif canto_envido == 'R' or canto_envido == 'r':
 				envido_hecho = 1
 				if cantar_envido(tanto, 50) == True:
-					print '---> Quiero'
+					print ('---> Quiero')
 					CualEnvido = 'RealEnvido'
 					hablar_envido(mano)
 				else:
-					print '---> No quiero'
+					print ('---> No quiero')
 					pts('pJUG', 1)
 			elif canto_envido == 'F' or canto_envido == 'f':
 				envido_hecho = 1
 				if cantar_envido(tanto, 10) == True:
-					print '---> Quiero'
+					print ('---> Quiero')
 					CualEnvido = 'FaltaEnvido'
 					hablar_envido(mano)
 				else:
-					print '---> No quiero'
+					print ('---> No quiero')
 					pts('pJUG', 1)
 			else:
 				pass
@@ -330,7 +330,7 @@ def envido(soymano, tanto, mano):
 def carta_del_oponente():
 	global ManoMIA
 	
-	print ManoMIA.listar_cartas()
+	print (ManoMIA.listar_cartas())
 	
 	while True:
 		if una_carta_mas() == True:
@@ -340,10 +340,10 @@ def carta_del_oponente():
 				otro = cartas_tiradas_CPU[1]
 			else:
 				otro = cartas_tiradas_CPU[2]
-			cartadeljugador = raw_input('Qué carta querés tirar? (El tiro un '+str(Carta(otro))+') ')
+			cartadeljugador = input('Qué carta querés tirar? (El tiro un '+str(Carta(otro))+') ')
 			
 		else:
-			cartadeljugador = raw_input('Qué carta querés tirar? ')
+			cartadeljugador = input('Qué carta querés tirar? ')
 		
 
 		if cartadeljugador == 'Mazo':
@@ -352,11 +352,11 @@ def carta_del_oponente():
 		try:
 			ndeorden = int(cartadeljugador)
 		except:
-			print 'Ingresá un numero válido'
+			print ('Ingresá un numero válido')
 			continue
 			
 		if ndeorden > ManoMIA.contar_cartas() or ndeorden <= 0:
-			print 'Ingresá un numero válido'
+			print ('Ingresá un numero válido')
 			continue
 
 		
@@ -367,7 +367,7 @@ def carta_del_oponente():
 			lacarta = ManoMIA.decir_cartas()[ndeorden-1]
 			ManoMIA.tirar_carta(lacarta, 'jugador')
 		else:
-			print 'No tenes mas cartas'
+			print ('No tenes mas cartas')
 		
 		return lacarta
 		break
@@ -468,7 +468,7 @@ def quejugar(mano, carta_del_jugador = None):
 			elif Carta(ManoCPU.mayor_carta()).jerarquizar() > carta_del_jugador.jerarquizar():
 				ManoCPU.tirar_carta(ManoCPU.mayor_carta())
 			else: 
-				print '---> Ganaste la mano, bien jugado.'
+				print ('---> Ganaste la mano, bien jugado.')
 				pts('pJUG', truco_hecho+1)
 				raise ZeroDivisionError
 		elif mano == True:
@@ -485,7 +485,7 @@ def quejugar(mano, carta_del_jugador = None):
 			if valor_mayor_carta > valor_carta_jugador:
 				ManoCPU.tirar_carta(ManoCPU.mayor_carta())				
 			else: 
-				print '---> Me voy al mazo.'
+				print ('---> Me voy al mazo.')
 				pts('pJUG', truco_hecho+1)
 				raise ZeroDivisionError
 		elif mano == True:
@@ -510,7 +510,7 @@ def pts(quien, cuanto):
 	elif quien == 'pJUG':
 		pJUG += cuanto
 	else:
-		print 'ERROR: def pts()'
+		print ('ERROR: def pts()')
 
 
 def decir_puntos():
@@ -525,13 +525,13 @@ def decir_puntos():
 		
 	nombre = analizar_nombre(Nombre_Jugador)
 
-	print '\n'
-	print '|   CPU   |'+nombre+'|'
-	print '|---------------------|'
-	print '|         |           |'
-	print '|      '+c+' |        '+j+' |'
-	print '|         |           |'
-	print '\n'
+	print ('\n')
+	print ('|   CPU   |'+nombre+'|')
+	print ('|---------------------|')
+	print ('|         |           |')
+	print ('|      '+c+' |        '+j+' |')
+	print ('|         |           |')
+	print ('\n')
 	
 	
 def analizar_nombre(nom):
@@ -645,17 +645,17 @@ def hablar_envido(mano):
 	
 	if mano == True:
 		if envido_CPU >= envido_JUG:
-			print '---> Tengo '+str(envido_CPU)+' y vos decis \"son buenas\". Gané.'
+			print ('---> Tengo '+str(envido_CPU)+' y vos decis \"son buenas\". Gané.')
 			pts('pCPU', puntos)
 		else:
-			print '---> Tengo '+str(envido_CPU)+' y vos '+str(envido_JUG)+'. Perdí.'
+			print ('---> Tengo '+str(envido_CPU)+' y vos '+str(envido_JUG)+'. Perdí.')
 			pts('pJUG', puntos)
 	elif mano == False:
 		if envido_CPU >= envido_JUG:
-			print '---> Tenes '+str(envido_JUG)+' y las mias son mejores: '+str(envido_CPU)+'. Gané.'
+			print ('---> Tenes '+str(envido_JUG)+' y las mias son mejores: '+str(envido_CPU)+'. Gané.')
 			pts('pCPU', puntos)
 		else:
-			print '---> Tenes '+str(envido_JUG)+' y digo \"son buenas\". Perdí.'
+			print ('---> Tenes '+str(envido_JUG)+' y digo \"son buenas\". Perdí.')
 			pts('pJUG', puntos)
 
 
@@ -689,7 +689,7 @@ def ingresar_mano():
 	envido_CPU = ManoCPU.tengo_envido()
 	envido_JUG = ManoMIA.tengo_envido()
 
-	print ManoMIA
+	print (ManoMIA)
 	
 	global Mano_Quien
 	primera_mano(envido_CPU, Mano_Quien)
@@ -703,23 +703,23 @@ if __name__ == '__main__':
 		for numero in Numeros:
 			Mazo.append([numero,palo])
 
-	ACuanto = raw_input('A cuánto querés jugar? (15/30) ')
+	ACuanto = input('A cuánto querés jugar? (15/30) ')
 	try:
 		ACuanto = int(ACuanto)
 	except ValueError:
-		print "Número no válido. Se usa el valor por defecto."
+		print ("Número no válido. Se usa el valor por defecto.")
 		ACuanto = 15
-	print "Jugamos a {0}".format(ACuanto)
+	print ("Jugamos a {0}".format(ACuanto))
 
-	Nombre_Jugador = str(raw_input('Cómo es tu nombre? '))
-	print '\n\n'
+	Nombre_Jugador = str(input('Cómo es tu nombre? '))
+	print ('\n\n')
 
 
 	while (pJUG < ACuanto) and (pCPU < ACuanto):
 		try:
 			ingresar_mano()
 		except EOFError:
-			print '\n\nQué lastima.\n'
+			print ('\n\nQué lastima.\n')
 			exit()
 		except ZeroDivisionError:
 			#Cambia quien es mano
@@ -735,7 +735,7 @@ if __name__ == '__main__':
 
 
 	if pJUG>=ACuanto:
-		print '\n\n\n----GANASTE----\n'
+		print ('\n\n\n----GANASTE----\n')
 	else:
-		print '\n\n\n----PERDISTE----\n'
+		print ('\n\n\n----PERDISTE----\n')
 

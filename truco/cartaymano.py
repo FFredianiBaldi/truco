@@ -61,7 +61,7 @@ class Carta:
 		elif num == 12:
 			return 7
 		else:
-			print 'Hubo un error al ingresar las cartas, por favor hacelo de nuevo\n'
+			print ('Hubo un error al ingresar las cartas, por favor hacelo de nuevo\n')
 			ingresar_mano()
 	def __getitem__(self, indice):
 		if indice == 0:
@@ -79,7 +79,7 @@ class Mano:
 			self.cartas.append(carta)
 		#print self.cartas	#DEBUG
 		if len(self.cartas)==1:
-			print self.cartas[0]
+			print (self.cartas[0])
 			self.c1 = Carta(self.cartas[0])
 		elif len(self.cartas)==2:
 			self.c1 = Carta(self.cartas[0])
@@ -154,7 +154,7 @@ class Mano:
 		global cartas_tiradas_CPU, cartas_tiradas_MIA
 		if quien=='CPU':
 			self.cartas.remove(carta)
-			print '---> Tiro el', Carta(carta).numero, 'de', Carta(carta).palo
+			print ('---> Tiro el', Carta(carta).numero, 'de', Carta(carta).palo)
 			cartas_tiradas_CPU.append(carta)
 		else:
 			self.cartas.remove(carta)
