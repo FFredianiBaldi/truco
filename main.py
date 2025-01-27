@@ -1,12 +1,12 @@
 from objetos import *
+from os import system
+
+system("cls")
+nombre_jugador = input("Cual es tu nombre? ")
 
 mazo = Mazo()
-jugador = Jugador()
+jugador = Jugador(nombre_jugador)
 cpu = CPU()
 
-mazo.repartir(jugador, cpu)
-
-
-mazo.mostrar_cartas()
-jugador.mostrar_cartas()
-cpu.mostrar_cartas()
+system("cls")
+partida = Partida()

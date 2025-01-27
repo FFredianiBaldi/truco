@@ -1,4 +1,29 @@
 from random import shuffle
+from os import system
+class Partida:
+    def __init__(self):
+        self.preguntarPuntos()
+
+    def preguntarPuntos(self):
+        puntos_para_ganar = input("A cuantos puntos queres jugar? (15/30)\n")
+        try:
+            puntos_para_ganar = int(puntos_para_ganar)
+        except:
+            system("cls")
+            print("El numero ingresado no es valido. Usando el valor por defecto (15)")
+            puntos_para_ganar = 15
+        
+        while puntos_para_ganar != 15 and puntos_para_ganar != 30:
+            system("cls")
+            puntos_para_ganar = input("Porfavor ingrese 15 o 30:\n")
+            try:
+                puntos_para_ganar = int(puntos_para_ganar)
+            except:
+                system("cls")
+                print("El numero ingresado no es valido. Usando el valor por defecto (15)")
+                puntos_para_ganar = 15
+
+        self.puntos_para_ganar = puntos_para_ganar
 
 class Carta:
     def __init__(self, numero, palo):
@@ -6,7 +31,8 @@ class Carta:
         self.palo = palo
 
 class Jugador:
-    def __init__(self):
+    def __init__(self, nombre):
+        self.nombre = nombre
         self.cartas = []
 
     def mostrar_cartas(self):
