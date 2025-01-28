@@ -2,8 +2,8 @@
 
 <ul>
     <li><s>se decide si se juega a 15 o a 30 puntos</s></li>
-    <li>se reparten 3 y 3 cartas para el jugador y el cpu</li>
-    <li>se elige al azar quien empieza en la primer ronda</li>
+    <li><s>se reparten 3 y 3 cartas para el jugador y el cpu</s></li>
+    <li><s>se elige al azar quien empieza en la primer ronda</s></li>
     <li>el que empieza, tiene la posibilidad de cantar envido truco o de tirar una carta</li>
     <li>si se canta envido, el otro tiene la posibilidad de aceptar, negar, o aumentar la apuesta</li>
     <ul>
